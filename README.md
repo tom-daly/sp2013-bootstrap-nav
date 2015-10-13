@@ -1,11 +1,13 @@
-SharePoint / Office 365 Client Side Navigation - Version 0.1 - 10/1/2015
+SharePoint / Office 365 Client Side Navigation - Version 0.2 - 10/12/2015
 
 GENERAL USAGE NOTES
 --------------------
-This code is specifically written to work on SharePoint 2013 on-prem, sandbox or Office 365. The purpose of this code is to replace the standard SharePoint navigation with a navigation that is Bootstrap v3 friendly. At this point it has not been fully tested to work in all possible navigation scenarios. It currently only supports 2 levels of navigation. The navigation can still be manipulated via the standard SharePoint interface.
+This code is specifically written to work on SharePoint 2013 on-prem, sandbox or Office 365. The purpose of this code is to replace the standard SharePoint navigation with a navigation that is Bootstrap v3 friendly.
 
-** IT IS STILL IN THE VERY EARLY STAGES OF DEVELOPMENT AND IS NOT CONSIDERED COMPLETE **
-	
+Currently this navigation only supports using the Managed Meta Data navigation. Structural navigation is not supported because the SharePoint / O365 REST endpoints make it impossbile to implement correctly. 
+
+This navigation will only support 2 levels, a top level and 1 drop down. Simply because at this time of this writing the current version of bootstrap v3.3.5 supports two levels. The code however, is written to loop through all the Managed Meta Data Navigation Nodes regardless. There are plenty of 3rd partys, plugins, and other users writting 3 or even 4 level flyouts that you could attempt to implement with this.
+
 HOW TO USE
 -----------
 It's very simple to use. 
