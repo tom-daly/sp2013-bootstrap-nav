@@ -102,7 +102,7 @@ topNav = function () {
 			var navItemProps = hasChildren ? { class: "dropdown" } : {};
 			// extending the navItemProps object to contain an ID. These are the values that are the same with or without children
 			$.extend(navItemProps, {
-				id: "nav-item-" + index // give the navigation item an ID using the loop's index
+				id: item.Key // give the navigation item an ID using the loop's index
 			});
 			// create the navigation item <li> object in jQuery, ass it the properties
 			var navItem = $("<li/>", navItemProps);
@@ -115,7 +115,7 @@ topNav = function () {
 			// if the current navigation item has children, rescursively calls this function
 			if(hasChildren) {
 				// call the function with the children nodes, the id of the current <li>, and true 
-				renderNavigationNodes(item.Nodes.results, "#nav-item-" + index, true);
+				renderNavigationNodes(item.Nodes.results, "#" + item.Key, true);
 			}
 		});
 
