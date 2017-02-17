@@ -1,3 +1,8 @@
+// Bootstrap Top Navigation script for SP2013/SP2016
+// Author: Thomas Daly
+// Date: 2/17/2017
+// Version: 0.3
+
 var topNav = window.topNav || {};
 
 topNav = function () {
@@ -6,6 +11,10 @@ topNav = function () {
 		siteUrl: null, // blank siteUrl node, this will try to auto-determine
 		targetSelector: null // init top level target selector as null
 	};
+
+    var generateKey = function () {
+     return Math.random().toString(36).substring(7);
+    };
 
 	var loadNavigation = function (targetSelector) {
 
@@ -51,7 +60,7 @@ topNav = function () {
 
 	var renderNavigationNodes = function (navigationNodes, targetSelector, isSub) {
 
-		// assign the node group properties, if sub then make a drop down, else it's the root node
+	// assign the node group properties, if sub then make a drop down, else it's the root node
 		var nodeGroupProps = isSub ? { class: "dropdown-menu", role: "menu" } : { class: "nav navbar-nav" };
 		// create the node group <ul> object in jQuery, assign it the properties
 		var nodeGroup = $("<ul/>", nodeGroupProps);
@@ -60,7 +69,7 @@ topNav = function () {
 
 		// iterate each navigation node and add to the node group above
 		$.each(navigationNodes, function (index, item) {
-
+            
 			// skip item if it has the hidden property
 			if(item.IsHidden) return;
 
@@ -102,7 +111,7 @@ topNav = function () {
 			var navItemProps = hasChildren ? { class: "dropdown" } : {};
 			// extending the navItemProps object to contain an ID. These are the values that are the same with or without children
 			$.extend(navItemProps, {
-				id: item.Key // give the navigation item an ID using the loop's index
+				id: generateKey() // give the navigation item an ID using the loop's index
 			});
 			// create the navigation item <li> object in jQuery, ass it the properties
 			var navItem = $("<li/>", navItemProps);
@@ -111,11 +120,11 @@ topNav = function () {
 
 			// append the navigation item <li> into it's parent group
 			nodeGroup.append(navItem);
-
+            
 			// if the current navigation item has children, rescursively calls this function
 			if(hasChildren) {
 				// call the function with the children nodes, the id of the current <li>, and true 
-				renderNavigationNodes(item.Nodes.results, "#" + item.Key, true);
+				renderNavigationNodes(item.Nodes.results, "#" + navItemProps.id, true);
 			}
 		});
 
@@ -130,8 +139,6 @@ topNav = function () {
 		
 		// generate the search promise
 		var searchPromise = getSearchPromise(queryUrl);
-		// init a blank navigation nodes array
-		var navigationNodes = [];
 
 		// when the search promise completes, do work with the results
 		$.when(searchPromise).done(function (results) {
