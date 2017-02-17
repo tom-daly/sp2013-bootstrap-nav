@@ -1,4 +1,4 @@
-SharePoint / Office 365 Client Side Navigation - Version 0.2 - 10/12/2015
+SharePoint / Office 365 Client Side Navigation - Version 0.3 - 2/17/2017
 
 GENERAL USAGE NOTES
 --------------------
