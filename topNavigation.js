@@ -13,7 +13,10 @@ topNav = function () {
 	};
 
     var generateKey = function () {
-     return Math.random().toString(36).substring(7);
+
+        // Generate a unique (enough) string for each navigation node
+        return Math.random().toString(36).substring(7);
+
     };
 
 	var loadNavigation = function (targetSelector) {
@@ -111,7 +114,7 @@ topNav = function () {
 			var navItemProps = hasChildren ? { class: "dropdown" } : {};
 			// extending the navItemProps object to contain an ID. These are the values that are the same with or without children
 			$.extend(navItemProps, {
-				id: generateKey() // give the navigation item an ID using the loop's index
+				id: generateKey() // give the navigation item a unique ID
 			});
 			// create the navigation item <li> object in jQuery, ass it the properties
 			var navItem = $("<li/>", navItemProps);
