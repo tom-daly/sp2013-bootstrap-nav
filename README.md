@@ -1,4 +1,4 @@
-SharePoint / Office 365 Client Side Navigation - Version 0.3 - 2/17/2017
+SharePoint / Office 365 Client Side Navigation - Version 0.4 - 2/24/2017
 
 GENERAL USAGE NOTES
 --------------------
@@ -16,6 +16,10 @@ It's very simple to use.
 
 2) Add the html snippet into the masterpage in the location you want the navigation to appear.
 
+CHANGE LOG
+-----------
+v0.4 - fixes: children with friendly urls inherit the segement of the parent
+v0.3 - fixes: parent/child relation broke using non-unique property. added unique key for each node.
 
 
 
