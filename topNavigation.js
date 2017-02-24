@@ -1,7 +1,7 @@
 // Bootstrap Top Navigation script for SP2013/SP2016
 // Author: Thomas Daly
-// Date: 2/17/2017
-// Version: 0.3
+// Date: 2/24/2017
+// Version: 0.4
 
 var topNav = window.topNav || {};
 
@@ -61,7 +61,7 @@ topNav = function () {
 
 	};
 
-	var renderNavigationNodes = function (navigationNodes, targetSelector, isSub) {
+	var renderNavigationNodes = function (navigationNodes, targetSelector, isSub, parentFriendlyUrlSegement) {
 
 	// assign the node group properties, if sub then make a drop down, else it's the root node
 		var nodeGroupProps = isSub ? { class: "dropdown-menu", role: "menu" } : { class: "nav navbar-nav" };
@@ -91,8 +91,11 @@ topNav = function () {
 
 			// assign the navigation node properties, if is has children assign bootstrap drop down properties, if no children then blank property object
 			var navNodeProps = hasChildren ? { class: "dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false" } : {};
-			// asign the navigation node url, if the simple link is set use that, otherwise url the friendly url segment
-			var navNodeUrl = item.SimpleUrl.length > 0 ? item.SimpleUrl : config.siteUrl + "/" + item.FriendlyUrlSegment;
+			
+            // if a parent friendly url was passed in use that to concatenate the links
+            var friendlyUrlSegment = parentFriendlyUrlSegement ? parentFriendlyUrlSegement + "/" + item.FriendlyUrlSegment : config.siteUrl + "/" + item.FriendlyUrlSegment;
+            // asign the navigation node url, if the simple link is set use that, otherwise url the friendly url segment
+			var navNodeUrl = item.SimpleUrl.length > 0 ? item.SimpleUrl : friendlyUrlSegment;
 			// extending the navNodeProps object to contain the following values. These are the values that are the same with or without children
 			$.extend(navNodeProps, {
 				text: item.Title, // the title of the navigation item
@@ -127,7 +130,7 @@ topNav = function () {
 			// if the current navigation item has children, rescursively calls this function
 			if(hasChildren) {
 				// call the function with the children nodes, the id of the current <li>, and true 
-				renderNavigationNodes(item.Nodes.results, "#" + navItemProps.id, true);
+				renderNavigationNodes(item.Nodes.results, "#" + navItemProps.id, true, friendlyUrlSegment);
 			}
 		});
 
