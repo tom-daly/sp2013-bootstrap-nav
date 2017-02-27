@@ -1,8 +1,8 @@
-SharePoint / Office 365 Client Side Navigation - Version 0.4 - 2/24/2017
+SharePoint 2013 / 2016 / Office 365 - Bootstrap Client Side Navigation - Version 0.4 - 2/24/2017
 
 GENERAL USAGE NOTES
 --------------------
-This code is specifically written to work on SharePoint 2013 on-prem, sandbox or Office 365. The purpose of this code is to replace the standard SharePoint navigation with a navigation that is Bootstrap v3 friendly.
+The purpose of this code is to replace the standard SharePoint navigation with a navigation that is Bootstrap v3 friendly.
 
 Currently this navigation only supports using the Managed Meta Data navigation. Structural navigation is not supported because the SharePoint / O365 REST endpoints make it impossbile to implement correctly. 
 
