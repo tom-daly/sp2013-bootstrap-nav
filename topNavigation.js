@@ -64,7 +64,7 @@ topNav = function () {
 	var renderNavigationNodes = function (navigationNodes, targetSelector, isSub, parentFriendlyUrlSegement) {
 
 	// assign the node group properties, if sub then make a drop down, else it's the root node
-		var nodeGroupProps = isSub ? { class: "dropdown-menu", role: "menu" } : { class: "nav navbar-nav" };
+		var nodeGroupProps = isSub ? { "class": "dropdown-menu", role: "menu" } : { "class": "nav navbar-nav" };
 		// create the node group <ul> object in jQuery, assign it the properties
 		var nodeGroup = $("<ul/>", nodeGroupProps);
 		// append the node group to the target selector, might be the root <ul> or a child <ul> (dropdown)
@@ -90,7 +90,7 @@ topNav = function () {
 			}
 
 			// assign the navigation node properties, if is has children assign bootstrap drop down properties, if no children then blank property object
-			var navNodeProps = hasChildren ? { class: "dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false" } : {};
+			var navNodeProps = hasChildren ? { "class": "dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false" } : {};
 			
             // if a parent friendly url was passed in use that to concatenate the links
             var friendlyUrlSegment = parentFriendlyUrlSegement ? parentFriendlyUrlSegement + "/" + item.FriendlyUrlSegment : config.siteUrl + "/" + item.FriendlyUrlSegment;
@@ -106,7 +106,7 @@ topNav = function () {
 			var navNode = $("<a/>",  navNodeProps);
 
 			// create a caret <span> object in jQuery
-			var caret = $("<span/>", { class: "caret" });
+			var caret = $("<span/>", { "class": "caret" });
 			// if this current navigation node has children, add a caret
 			if(hasChildren) {
 				// append the drop caret to the navigation node
@@ -114,7 +114,7 @@ topNav = function () {
 			}
 
 			// assign the navigation item properties, if it has children then give it a bootstrap dropdown class, if no children then a blank property object
-			var navItemProps = hasChildren ? { class: "dropdown" } : {};
+			var navItemProps = hasChildren ? { "class": "dropdown" } : {};
 			// extending the navItemProps object to contain an ID. These are the values that are the same with or without children
 			$.extend(navItemProps, {
 				id: generateKey() // give the navigation item a unique ID
