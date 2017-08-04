@@ -1,7 +1,7 @@
 // Bootstrap Top Navigation script for SP2013/SP2016
 // Author: Thomas Daly
-// Date: 2/24/2017
-// Version: 0.4
+// Date: 8/4/2017
+// Version: 0.5
 
 var topNav = window.topNav || {};
 
@@ -9,33 +9,60 @@ topNav = function () {
 
 	var config = {
 		siteUrl: null, // blank siteUrl node, this will try to auto-determine
-		targetSelector: null // init top level target selector as null
+		targetSelector: null, // init top level target selector as null
+		storageCacheKey: "topNavigation",
+		useCache: true		
 	};
 
-    var generateKey = function () {
+	var generateHash = function (key) {
+		var hash = 0,
+			i, chr;
+		if (key.length === 0) return hash;
+		for (i = 0; i < key.length; i++) {
+			chr = key.charCodeAt(i);
+			hash = ((hash << 5) - hash) + chr;
+			hash |= 0; // Convert to 32bit integer
+		}
+		return hash;
+	};
 
-        // Generate a unique (enough) string for each navigation node
-        return Math.random().toString(36).substring(7);
+	var getStoredNav = function () {
+		if (typeof (Storage) !== "undefined") {
+			var navItems = sessionStorage.getItem(config.storageCacheKey);
+			var navItemsObj = JSON.parse(navItems);
+			return navItemsObj;
+		} else return "";
+	};
 
-    };
+	var setStoredNav = function (obj) {
+		if (typeof (Storage) !== "undefined") {
+			sessionStorage.setItem(config.storageCacheKey, JSON.stringify(obj));
+		}
+	};
 
 	var loadNavigation = function (targetSelector) {
-
 		// store the detected site url to a global variable
 		config.siteUrl = _spPageContextInfo.siteAbsoluteUrl;
 		// store the passed in target selector node
 		config.targetSelector = targetSelector;
 
-		// create the promise to retrieve the navigation nodes
-		var getNodesPromise = getManagedNavigationNodes();
-		// when the navigation nodes are returned proccede
-		$.when(getNodesPromise).done(function(navigationNodes) {
-			// render the returned navigation nodes to the screen into the target selector
-			renderNavigationNodes(navigationNodes, config.targetSelector);
-			// select the active navigation node
-			selectActiveNode();
-		});
-
+		var storedNav = getStoredNav();
+		if (!storedNav || storedNav.length <= 0 || !config.useCache) {
+			// create the promise to retrieve the navigation nodes
+			var getNodesPromise = getManagedNavigationNodes();
+			// when the navigation nodes are returned proccede
+			$.when(getNodesPromise).done(function (navigationNodes) {
+				$(config.targetSelector).addClass("fresh");
+				setStoredNav(navigationNodes);
+				// render the returned navigation nodes to the screen into the target selector
+				renderNavigationNodes(navigationNodes, config.targetSelector);
+				// select the active navigation node
+				selectActiveNode();
+			});
+		} else {
+			$(config.targetSelector).addClass("cached");
+			renderNavigationNodes(storedNav, config.targetSelector);
+		}
 	};
 
 	var selectActiveNode = function () {
@@ -117,7 +144,7 @@ topNav = function () {
 			var navItemProps = hasChildren ? { "class": "dropdown" } : {};
 			// extending the navItemProps object to contain an ID. These are the values that are the same with or without children
 			$.extend(navItemProps, {
-				id: generateKey() // give the navigation item a unique ID
+				id: generateHash(item.Title) // give the navigation item a unique ID
 			});
 			// create the navigation item <li> object in jQuery, ass it the properties
 			var navItem = $("<li/>", navItemProps);
@@ -185,12 +212,12 @@ topNav = function () {
 	};
 
 	return {
-		LoadNavigation: loadNavigation
+		loadNavigation: loadNavigation
 	};
 
 }();
 
 $(document).ready(function() {
 	// when doc ready call the load navigation function
-	topNav.LoadNavigation("#my-top-navigation");  // the top level div where to put the navgiation nodes
+	topNav.loadNavigation("#my-top-navigation");  // the top level div where to put the navgiation nodes
 });
