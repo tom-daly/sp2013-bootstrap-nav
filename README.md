@@ -17,6 +17,8 @@ It's very simple to use.
 
 2) Add the html snippet into the masterpage in the location you want the navigation to appear.
 
+3) Set properties in config variable. Located in the top of the javascript file you can enable/disable the session storage but setting the config value 'useCache' to either true or false.
+
 CHANGE LOG
 -----------
 v0.6 - solved issue #3 - remove link for nodes with no url specified in SimpleUrl<br/>
