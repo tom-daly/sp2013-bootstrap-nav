@@ -1,4 +1,4 @@
-SharePoint 2013 / 2016 / Office 365 - Bootstrap Client Side Navigation
+SharePoint 2013 / 2016 / Office 365 - Bootstrap Client Side Navigation<br/>
 8/4/2017 v0.6
 
 GENERAL USAGE NOTES
