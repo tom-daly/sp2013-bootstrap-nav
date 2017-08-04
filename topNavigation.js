@@ -1,7 +1,7 @@
 // Bootstrap Top Navigation script for SP2013/SP2016
 // Author: Thomas Daly
 // Date: 8/4/2017
-// Version: 0.5
+// Version: 0.6
 
 var topNav = window.topNav || {};
 
@@ -11,7 +11,7 @@ topNav = function () {
 		siteUrl: null, // blank siteUrl node, this will try to auto-determine
 		targetSelector: null, // init top level target selector as null
 		storageCacheKey: "topNavigation",
-		useCache: true		
+		useCache: false		
 	};
 
 	var generateHash = function (key) {
@@ -118,19 +118,31 @@ topNav = function () {
 
 			// assign the navigation node properties, if is has children assign bootstrap drop down properties, if no children then blank property object
 			var navNodeProps = hasChildren ? { "class": "dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false" } : {};
-			
+            
             // if a parent friendly url was passed in use that to concatenate the links
             var friendlyUrlSegment = parentFriendlyUrlSegement ? parentFriendlyUrlSegement + "/" + item.FriendlyUrlSegment : config.siteUrl + "/" + item.FriendlyUrlSegment;
             // asign the navigation node url, if the simple link is set use that, otherwise url the friendly url segment
-			var navNodeUrl = item.SimpleUrl.length > 0 ? item.SimpleUrl : friendlyUrlSegment;
-			// extending the navNodeProps object to contain the following values. These are the values that are the same with or without children
-			$.extend(navNodeProps, {
-				text: item.Title, // the title of the navigation item
-				href: navNodeUrl, // the url of the navigation item
-				target: targetValue // the target value of the url item (open in new window)
-			});
-			// create the navigation node <a> object in jQuery, assign it the properties
-			var navNode = $("<a/>",  navNodeProps);
+            var navNodeUrl =  item.NodeType === 0 ? item.SimpleUrl : friendlyUrlSegment; //NodeType 0 = Simple Url, NodeType 1 = Friendly Url
+
+            var navNode = null;
+            if(item.NodeType === 0 && item.SimpleUrl.length <= 0) {
+                // extending the navNodeProps object to contain the following values. These are the values that are the same with or without children
+                $.extend(navNodeProps, {
+                    text: item.Title
+                });
+                // create the navigation node <a> object in jQuery, assign it the properties
+                navNode = $("<span/>",  navNodeProps);
+            }
+            else {
+                // extending the navNodeProps object to contain the following values. These are the values that are the same with or without children
+                $.extend(navNodeProps, {
+                    text: item.Title, // the title of the navigation item
+                    href: navNodeUrl, // the url of the navigation item
+                    target: targetValue // the target value of the url item (open in new window)
+                });
+                // create the navigation node <a> object in jQuery, assign it the properties
+                navNode = $("<a/>",  navNodeProps);
+            }
 
 			// create a caret <span> object in jQuery
 			var caret = $("<span/>", { "class": "caret" });
