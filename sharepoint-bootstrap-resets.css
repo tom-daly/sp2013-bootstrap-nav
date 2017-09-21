@@ -1,0 +1,22 @@
+#suiteBar *, #s4-ribbonrow *, #s4-titlerow, /* Suite Bar & Ribbon Row */
+.ms-webpart-menuLink, /* web part drop down arrow */
+.ms-bottompaging *, .ms-bottompagingline *, .ms-storefront-paging *, /* pager row arrows */
+.ms-csrlistview-controldiv,  /* list view search box */ 
+.ms-dlgCloseBtn *,  /* close button in dialogs */
+.ms-designbuilder-cuicontainer *, .ms-designbuilder-main *, /* change the look controls & display */
+#rtePasteFlyoutLink, /* paste text box in rte mode */
+div[class^='ms-InlineSearch'], div[class^='ms-InlineSearch'] *,  /* search boxes on new list/app pages */
+div[id$='ListViewWebPartJSGrid'] * /* list view web parts */ {
+
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+/* Remove min width on the collapse nav button */
+button, button.navbar-toggle {
+	min-width: 0;
+}
+/* Release #contentBox min-width */
+body #contentBox {
+	min-width: 0;
+}
