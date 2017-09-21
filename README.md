@@ -1,5 +1,5 @@
 SharePoint 2013 / 2016 / Office 365 - Bootstrap Client Side Navigation<br/>
-8/4/2017 v0.6
+9/20/2017 v0.7
 
 GENERAL USAGE NOTES
 --------------------
@@ -20,6 +20,7 @@ It's very simple to use.
 3) Set properties in config variable. Located in the top of the javascript file you can enable/disable the session storage but setting the config value 'useCache' to either true or false.
 
 Optional: using Bootstrap CSS cause some conflicts from SharePoint. I've provided my typical file that helps to reset many of those unwanted effects.
+
 CHANGE LOG
 -----------
 v0.7 - changed top level node to be "span" if containing children nodes. Removed global targetSelector field and using parameter passing. Added selectActiveNode to run after cache or fresh execution. Added navigationProvider configuration setting so that it could be flipped for either global nav or left navigation. Added sharepoint-bootstrap-resets.css.
