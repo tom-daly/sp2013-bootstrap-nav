@@ -23,7 +23,7 @@ Optional: using Bootstrap CSS cause some conflicts from SharePoint. I've provide
 
 CHANGE LOG
 -----------
-v0.7 - changed top level node to be "span" if containing children nodes. Removed global targetSelector field and using parameter passing. Added selectActiveNode to run after cache or fresh execution. Added navigationProvider configuration setting so that it could be flipped for either global nav or left navigation. Added sharepoint-bootstrap-resets.css.
+v0.7 - changed top level node to be "span" if containing children nodes. Removed global targetSelector field and using parameter passing. Added selectActiveNode to run after cache or fresh execution. Added navigationProvider configuration setting so that it could be flipped for either global nav or left navigation. Added sharepoint-bootstrap-resets.css.<br/>
 v0.6 - solved issue #3 - remove link for nodes with no url specified in SimpleUrl<br/>
 v0.5 - enhancements: changed unique key for each node to use a hash value of the title (allows targeting for css). Added browser caching w/ config value to enable/disable it.<br/>
 v0.4 - fixes: children with friendly urls inherit the segement of the parent<br/>
