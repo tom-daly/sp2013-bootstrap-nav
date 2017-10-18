@@ -1,6 +1,6 @@
 #suiteBar *, #s4-ribbonrow *, #s4-titlerow, /* Suite Bar & Ribbon Row */
 .ms-webpart-menuLink, /* web part drop down arrow */
-.ms-bottompaging *, .ms-bottompagingline *, .ms-storefront-paging *, /* pager row arrows */
+.ms-bottompaging *, .ms-bottompagingline *, .ms-storefront-paging *, #Paging *, /* pager row arrows */
 .ms-csrlistview-controldiv,  /* list view search box */ 
 .ms-dlgCloseBtn *,  /* close button in dialogs */
 .ms-designbuilder-cuicontainer *, .ms-designbuilder-main *, /* change the look controls & display */
