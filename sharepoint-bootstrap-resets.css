@@ -1,13 +1,13 @@
 #suiteBar *, #s4-ribbonrow *, #s4-titlerow, /* Suite Bar & Ribbon Row */
 .ms-webpart-menuLink, /* web part drop down arrow */
-.ms-bottompaging *, .ms-bottompagingline *, .ms-storefront-paging *, #Paging *, /* pager row arrows */
+.ms-bottompaging *, .ms-bottompagingline * /* pager row arrows */
 .ms-csrlistview-controldiv,  /* list view search box */ 
 .ms-dlgCloseBtn *,  /* close button in dialogs */
 .ms-designbuilder-cuicontainer *, .ms-designbuilder-main *, /* change the look controls & display */
 #rtePasteFlyoutLink, /* paste text box in rte mode */
-div[class^='ms-InlineSearch'], div[class^='ms-InlineSearch'] *,  /* search boxes on new list/app pages */
-div[id$='ListViewWebPartJSGrid'] * /* list view web parts */ {
-
+.js-callout-closeButton, /* flyout close button */
+.ms-js-contextmenu, /* flyouy menu */
+div[class^='ms-InlineSearch'], div[class^='ms-InlineSearch'] *  /* search boxes on new list/app pages */{
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
