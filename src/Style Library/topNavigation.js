@@ -1,7 +1,7 @@
 // Bootstrap Top Navigation script for SP2013/SP2016/OFFICE 365
 // Author: Thomas Daly
 // Date: 9/20/2017
-// Version: 0.7
+// Version: 0.8
 
 var topNav = window.topNav || {};
 
