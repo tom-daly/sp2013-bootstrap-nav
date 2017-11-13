@@ -1,0 +1,25 @@
+{
+  "name": "sp2013-bootstrap-nav",
+  "version": "1.0.0",
+  "description": "SharePoint / Office 365 Bootstrap Navigation",
+  "main": "topNavigation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom-daly/sp2013-bootstrap-nav.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tom-daly/sp2013-bootstrap-nav/issues"
+  },
+  "homepage": "https://github.com/tom-daly/sp2013-bootstrap-nav#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-run": "^1.7.1",
+    "gulp-watch": "^4.3.11",
+    "spsave": "^3.1.0"
+  }
+}
