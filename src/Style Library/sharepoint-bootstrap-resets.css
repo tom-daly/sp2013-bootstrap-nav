@@ -5,7 +5,7 @@
 .ms-dlgCloseBtn *,  /* close button in dialogs */
 .ms-designbuilder-cuicontainer *, .ms-designbuilder-main *, /* change the look controls & display */
 #rtePasteFlyoutLink, /* paste text box in rte mode */
-.js-callout-closeButton, /* flyout close button */
+.js-callout-mainElement *, /* flyout close button */
 div[class^='ms-InlineSearch'], div[class^='ms-InlineSearch'] *,  /* search boxes on new list/app pages */
 div[id$='ListViewWebPartJSGrid'] *, /* list view web parts */
 .ms-js-contextmenu *, /* flyout menus on lists ... */ {
