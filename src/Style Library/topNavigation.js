@@ -162,7 +162,7 @@ topNav = function () {
 			$.extend(navItemProps, {
 				id: generateHash(item.Title) // give the navigation item a unique ID
 			});
-			// create the navigation item <li> object in jQuery, ass it the properties
+			// create the navigation item <li> object in jQuery, pass it the properties
 			var navItem = $("<li/>", navItemProps);
 			// append the navigation node <a> into the navigation item <li>
 			navItem.append(navNode);
