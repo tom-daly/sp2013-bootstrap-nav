@@ -1,3 +1,5 @@
+This project is no longer actively supported. Feel free to use this as an example but at this point I've moved on to new projects that require most of my time. 
+
 SharePoint 2013 / 2016 / Office 365 - Bootstrap Client Side Navigation<br/>
 9/20/2017 v0.7
 
